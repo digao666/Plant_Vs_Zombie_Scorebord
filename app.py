@@ -21,7 +21,7 @@ def process_scores(players):
     return dict_list
 
 def get_scores():
-    filename = 'webapp/pvzscore.csv'
+    filename = 'pvzscore.csv'
     data = load_scores(filename)
     scores = process_scores(data)
     return scores
@@ -54,4 +54,4 @@ def units():
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)
+    app.run(debug=True, port=port)
