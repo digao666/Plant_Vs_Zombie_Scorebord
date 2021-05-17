@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-import csv
+import csv, os
 
 def load_scores(filename):
     with open(filename, newline='') as csvfile:
@@ -53,4 +53,5 @@ def units():
     return render_template("units.html")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
