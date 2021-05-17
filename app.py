@@ -1,4 +1,4 @@
-from flask import Flask, Blueprint, render_template
+from flask import Flask, render_template
 import csv
 
 def load_scores(filename):
