@@ -27,6 +27,8 @@ def get_scores():
     return scores
 
 pvz_bp = Blueprint("pvz",__name__)
+app = Flask(__name__)
+app.register_blueprint(pvz_bp)
 
 @pvz_bp.route("/")
 def home():
@@ -53,6 +55,4 @@ def units():
     return render_template("units.html")
 
 if __name__ == "__main__":
-    app = Flask(__name__)
-    app.register_blueprint(pvz_bp)
     app.run(debug=True)
