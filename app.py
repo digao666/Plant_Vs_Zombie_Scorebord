@@ -26,31 +26,29 @@ def get_scores():
     scores = process_scores(data)
     return scores
 
-pvz_bp = Blueprint("pvz",__name__)
 app = Flask(__name__)
-app.register_blueprint(pvz_bp)
 
-@pvz_bp.route("/")
+@app.route("/")
 def home():
     return render_template("home.html")
 
-@pvz_bp.route("/about")
+@app.route("/about")
 def about():
     return render_template("about.html")
 
-@pvz_bp.route("/scoreboard")
+@app.route("/scoreboard")
 def score():
     scores = get_scores()
     return render_template("scoreboard.html", scores = scores)
 
-@pvz_bp.route("/scoreboard/<int:player_id>")
+@app.route("/scoreboard/<int:player_id>")
 def player(player_id):
     scores = get_scores()
     for score in scores:
         if score["id"] == str(player_id):
             return render_template("player.html", score = score)
 
-@pvz_bp.route("/units")
+@app.route("/units")
 def units():
     return render_template("units.html")
 
